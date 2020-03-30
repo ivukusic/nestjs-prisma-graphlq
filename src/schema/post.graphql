@@ -1,0 +1,48 @@
+input PostArgs {
+  where: PostWhereInput
+  orderBy: PostOrderByInput
+  skip: Int
+  after: String
+  before: String
+  first: Int
+  last: Int
+}
+
+type Post implements Node {
+  id: ID!
+  title: String!
+  body: String!
+  published: Boolean!
+  author: User!
+  comments(
+    where: CommentWhereInput
+    orderBy: CommentOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Comment!]
+  commentsConnection(
+    where: CommentWhereInput
+    orderBy: CommentOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): CommentConnection!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+input PostWhereUniqueWithAuthorInput {
+  id: ID!
+  author: UserCreateOneWithoutCommentsInput
+}
+
+type Mutation {
+  createPost(data: PostCreateWithoutAuthorInput!): Post!
+  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+  deletePost(where: PostWhereUniqueInput!): Post
+}

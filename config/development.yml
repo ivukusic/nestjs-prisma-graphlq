@@ -5,6 +5,3 @@ db:
   password: 'admin'
   database: 'task_management'
   synchronize: true
-
-jwt:
-  secret: 'topSecret51'

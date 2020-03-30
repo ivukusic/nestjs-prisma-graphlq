@@ -1,9 +1,9 @@
-# NESTJS BOILER PLATE - example with REST API
+# NESTJS BOILER PLATE - example with GRAPHQL
 
 ## Description
 
-NestJS boilerplate with examples of REST API + JWT authentication with passport. Using postgreSQL with typeORM.
-Typescript.
+NestJS boilerplate with examples of GRAPHQL + JWT authentication with passport. Using postgreSQL with typeORM.
+Typescript. Authentication. Roles
 
 ## Installation
 

@@ -1,0 +1,102 @@
+input UserArgs {
+  where: UserWhereInput
+  orderBy: UserOrderByInput
+  skip: Int
+  after: String
+  before: String
+  first: Int
+  last: Int
+}
+
+type UserBasic {
+  id: ID!
+  name: String!
+  email: String!
+  role: Role!
+}
+
+type User implements Node {
+  id: ID!
+  name: String!
+  email: String!
+  posts(
+    where: PostWhereInput
+    orderBy: PostOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Post!]
+  postsConnection(
+    where: PostWhereInput
+    orderBy: PostOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): PostConnection!
+  comments(
+    where: CommentWhereInput
+    orderBy: CommentOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Comment!]
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+type Query {
+  me: User
+  users(
+    where: UserWhereInput
+    orderBy: UserOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [User]!
+  user(where: UserWhereUniqueInput!): User
+  usersConnection(
+    where: UserWhereInput
+    orderBy: UserOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): UserConnection!
+}
+
+input SignUpInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+extend type User {
+  jwt: String
+}
+
+input UserDeleteWhereInput {
+  id: String!
+}
+
+type Mutation {
+  signup(data: SignUpInput): User!
+  login(data: LoginInput): User!
+
+  createUser(data: UserCreateInput): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  deleteUser(where: UserWhereUniqueInput!): User
+}

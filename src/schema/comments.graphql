@@ -1,0 +1,23 @@
+input CommentArgs {
+  where: CommentWhereInput
+  orderBy: CommentOrderByInput
+  skip: Int
+  after: String
+  before: String
+  first: Int
+  last: Int
+}
+
+input CommentCreateInput {
+  id: ID
+  text: String!
+  updatedAt: DateTime
+  createdAt: DateTime
+  post: PostCreateOneWithoutCommentsInput!
+}
+
+type Mutation {
+  createComment(data: CommentCreateWithoutAuthorInput!): Comment!
+  updateComment(data: CommentUpdateWithoutAuthorDataInput!, where: CommentWhereUniqueInput!): Comment
+  deleteComment(where: CommentWhereUniqueInput!): Comment
+}
