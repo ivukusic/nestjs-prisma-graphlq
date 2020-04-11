@@ -10,24 +10,20 @@ input UserArgs {
 
 type UserBasic {
   id: ID!
-  name: String!
+  address: String
+  city: String
+  company: String
+  country: String
   email: String!
+  firstName: String!
+  image: String
+  lastName: String!
+  password: String!
+  postalCode: String
   role: Role!
 }
 
-type User implements Node {
-  id: ID!
-  name: String!
-  email: String!
-  posts(
-    where: PostWhereInput
-    orderBy: PostOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [Post!]
+extend type User {
   postsConnection(
     where: PostWhereInput
     orderBy: PostOrderByInput
@@ -37,7 +33,7 @@ type User implements Node {
     first: Int
     last: Int
   ): PostConnection!
-  comments(
+  commentsConnection(
     where: CommentWhereInput
     orderBy: CommentOrderByInput
     skip: Int
@@ -45,9 +41,7 @@ type User implements Node {
     before: String
     first: Int
     last: Int
-  ): [Comment!]
-  updatedAt: DateTime!
-  createdAt: DateTime!
+  ): CommentConnection!
 }
 
 type Query {
@@ -74,9 +68,16 @@ type Query {
 }
 
 input SignUpInput {
+  address: String
+  city: String
+  company: String
+  country: String
   email: String!
-  name: String!
+  firstName: String!
+  image: String
+  lastName: String!
   password: String!
+  postalCode: String
 }
 
 input LoginInput {

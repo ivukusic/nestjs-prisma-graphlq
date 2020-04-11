@@ -1206,9 +1206,16 @@ type Subscription {
 
 type User implements Node {
   id: ID!
-  name: String!
+  address: String
+  city: String
+  company: String
+  country: String
   email: String!
+  firstName: String!
+  image: String
+  lastName: String!
   password: String!
+  postalCode: String
   role: Role!
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
   comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
@@ -1228,9 +1235,16 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
-  name: String!
+  address: String
+  city: String
+  company: String
+  country: String
   email: String!
+  firstName: String!
+  image: String
+  lastName: String!
   password: String!
+  postalCode: String
   role: Role
   posts: PostCreateManyWithoutAuthorInput
   comments: CommentCreateManyWithoutAuthorInput
@@ -1248,18 +1262,32 @@ input UserCreateOneWithoutPostsInput {
 
 input UserCreateWithoutCommentsInput {
   id: ID
-  name: String!
+  address: String
+  city: String
+  company: String
+  country: String
   email: String!
+  firstName: String!
+  image: String
+  lastName: String!
   password: String!
+  postalCode: String
   role: Role
   posts: PostCreateManyWithoutAuthorInput
 }
 
 input UserCreateWithoutPostsInput {
   id: ID
-  name: String!
+  address: String
+  city: String
+  company: String
+  country: String
   email: String!
+  firstName: String!
+  image: String
+  lastName: String!
   password: String!
+  postalCode: String
   role: Role
   comments: CommentCreateManyWithoutAuthorInput
 }
@@ -1276,12 +1304,26 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
+  address_ASC
+  address_DESC
+  city_ASC
+  city_DESC
+  company_ASC
+  company_DESC
+  country_ASC
+  country_DESC
   email_ASC
   email_DESC
+  firstName_ASC
+  firstName_DESC
+  image_ASC
+  image_DESC
+  lastName_ASC
+  lastName_DESC
   password_ASC
   password_DESC
+  postalCode_ASC
+  postalCode_DESC
   role_ASC
   role_DESC
   createdAt_ASC
@@ -1292,9 +1334,16 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
-  name: String!
+  address: String
+  city: String
+  company: String
+  country: String
   email: String!
+  firstName: String!
+  image: String
+  lastName: String!
   password: String!
+  postalCode: String
   role: Role!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -1338,18 +1387,32 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateInput {
-  name: String
+  address: String
+  city: String
+  company: String
+  country: String
   email: String
+  firstName: String
+  image: String
+  lastName: String
   password: String
+  postalCode: String
   role: Role
   posts: PostUpdateManyWithoutAuthorInput
   comments: CommentUpdateManyWithoutAuthorInput
 }
 
 input UserUpdateManyMutationInput {
-  name: String
+  address: String
+  city: String
+  company: String
+  country: String
   email: String
+  firstName: String
+  image: String
+  lastName: String
   password: String
+  postalCode: String
   role: Role
 }
 
@@ -1368,17 +1431,31 @@ input UserUpdateOneRequiredWithoutPostsInput {
 }
 
 input UserUpdateWithoutCommentsDataInput {
-  name: String
+  address: String
+  city: String
+  company: String
+  country: String
   email: String
+  firstName: String
+  image: String
+  lastName: String
   password: String
+  postalCode: String
   role: Role
   posts: PostUpdateManyWithoutAuthorInput
 }
 
 input UserUpdateWithoutPostsDataInput {
-  name: String
+  address: String
+  city: String
+  company: String
+  country: String
   email: String
+  firstName: String
+  image: String
+  lastName: String
   password: String
+  postalCode: String
   role: Role
   comments: CommentUpdateManyWithoutAuthorInput
 }
@@ -1442,46 +1519,166 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  name: String
+  address: String
 
   """All values that are not equal to given value."""
-  name_not: String
+  address_not: String
 
   """All values that are contained in given list."""
-  name_in: [String!]
+  address_in: [String!]
 
   """All values that are not contained in given list."""
-  name_not_in: [String!]
+  address_not_in: [String!]
 
   """All values less than the given value."""
-  name_lt: String
+  address_lt: String
 
   """All values less than or equal the given value."""
-  name_lte: String
+  address_lte: String
 
   """All values greater than the given value."""
-  name_gt: String
+  address_gt: String
 
   """All values greater than or equal the given value."""
-  name_gte: String
+  address_gte: String
 
   """All values containing the given string."""
-  name_contains: String
+  address_contains: String
 
   """All values not containing the given string."""
-  name_not_contains: String
+  address_not_contains: String
 
   """All values starting with the given string."""
-  name_starts_with: String
+  address_starts_with: String
 
   """All values not starting with the given string."""
-  name_not_starts_with: String
+  address_not_starts_with: String
 
   """All values ending with the given string."""
-  name_ends_with: String
+  address_ends_with: String
 
   """All values not ending with the given string."""
-  name_not_ends_with: String
+  address_not_ends_with: String
+  city: String
+
+  """All values that are not equal to given value."""
+  city_not: String
+
+  """All values that are contained in given list."""
+  city_in: [String!]
+
+  """All values that are not contained in given list."""
+  city_not_in: [String!]
+
+  """All values less than the given value."""
+  city_lt: String
+
+  """All values less than or equal the given value."""
+  city_lte: String
+
+  """All values greater than the given value."""
+  city_gt: String
+
+  """All values greater than or equal the given value."""
+  city_gte: String
+
+  """All values containing the given string."""
+  city_contains: String
+
+  """All values not containing the given string."""
+  city_not_contains: String
+
+  """All values starting with the given string."""
+  city_starts_with: String
+
+  """All values not starting with the given string."""
+  city_not_starts_with: String
+
+  """All values ending with the given string."""
+  city_ends_with: String
+
+  """All values not ending with the given string."""
+  city_not_ends_with: String
+  company: String
+
+  """All values that are not equal to given value."""
+  company_not: String
+
+  """All values that are contained in given list."""
+  company_in: [String!]
+
+  """All values that are not contained in given list."""
+  company_not_in: [String!]
+
+  """All values less than the given value."""
+  company_lt: String
+
+  """All values less than or equal the given value."""
+  company_lte: String
+
+  """All values greater than the given value."""
+  company_gt: String
+
+  """All values greater than or equal the given value."""
+  company_gte: String
+
+  """All values containing the given string."""
+  company_contains: String
+
+  """All values not containing the given string."""
+  company_not_contains: String
+
+  """All values starting with the given string."""
+  company_starts_with: String
+
+  """All values not starting with the given string."""
+  company_not_starts_with: String
+
+  """All values ending with the given string."""
+  company_ends_with: String
+
+  """All values not ending with the given string."""
+  company_not_ends_with: String
+  country: String
+
+  """All values that are not equal to given value."""
+  country_not: String
+
+  """All values that are contained in given list."""
+  country_in: [String!]
+
+  """All values that are not contained in given list."""
+  country_not_in: [String!]
+
+  """All values less than the given value."""
+  country_lt: String
+
+  """All values less than or equal the given value."""
+  country_lte: String
+
+  """All values greater than the given value."""
+  country_gt: String
+
+  """All values greater than or equal the given value."""
+  country_gte: String
+
+  """All values containing the given string."""
+  country_contains: String
+
+  """All values not containing the given string."""
+  country_not_contains: String
+
+  """All values starting with the given string."""
+  country_starts_with: String
+
+  """All values not starting with the given string."""
+  country_not_starts_with: String
+
+  """All values ending with the given string."""
+  country_ends_with: String
+
+  """All values not ending with the given string."""
+  country_not_ends_with: String
   email: String
 
   """All values that are not equal to given value."""
@@ -1522,6 +1719,126 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   email_not_ends_with: String
+  firstName: String
+
+  """All values that are not equal to given value."""
+  firstName_not: String
+
+  """All values that are contained in given list."""
+  firstName_in: [String!]
+
+  """All values that are not contained in given list."""
+  firstName_not_in: [String!]
+
+  """All values less than the given value."""
+  firstName_lt: String
+
+  """All values less than or equal the given value."""
+  firstName_lte: String
+
+  """All values greater than the given value."""
+  firstName_gt: String
+
+  """All values greater than or equal the given value."""
+  firstName_gte: String
+
+  """All values containing the given string."""
+  firstName_contains: String
+
+  """All values not containing the given string."""
+  firstName_not_contains: String
+
+  """All values starting with the given string."""
+  firstName_starts_with: String
+
+  """All values not starting with the given string."""
+  firstName_not_starts_with: String
+
+  """All values ending with the given string."""
+  firstName_ends_with: String
+
+  """All values not ending with the given string."""
+  firstName_not_ends_with: String
+  image: String
+
+  """All values that are not equal to given value."""
+  image_not: String
+
+  """All values that are contained in given list."""
+  image_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_not_in: [String!]
+
+  """All values less than the given value."""
+  image_lt: String
+
+  """All values less than or equal the given value."""
+  image_lte: String
+
+  """All values greater than the given value."""
+  image_gt: String
+
+  """All values greater than or equal the given value."""
+  image_gte: String
+
+  """All values containing the given string."""
+  image_contains: String
+
+  """All values not containing the given string."""
+  image_not_contains: String
+
+  """All values starting with the given string."""
+  image_starts_with: String
+
+  """All values not starting with the given string."""
+  image_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_ends_with: String
+
+  """All values not ending with the given string."""
+  image_not_ends_with: String
+  lastName: String
+
+  """All values that are not equal to given value."""
+  lastName_not: String
+
+  """All values that are contained in given list."""
+  lastName_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastName_not_in: [String!]
+
+  """All values less than the given value."""
+  lastName_lt: String
+
+  """All values less than or equal the given value."""
+  lastName_lte: String
+
+  """All values greater than the given value."""
+  lastName_gt: String
+
+  """All values greater than or equal the given value."""
+  lastName_gte: String
+
+  """All values containing the given string."""
+  lastName_contains: String
+
+  """All values not containing the given string."""
+  lastName_not_contains: String
+
+  """All values starting with the given string."""
+  lastName_starts_with: String
+
+  """All values not starting with the given string."""
+  lastName_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastName_ends_with: String
+
+  """All values not ending with the given string."""
+  lastName_not_ends_with: String
   password: String
 
   """All values that are not equal to given value."""
@@ -1562,6 +1879,46 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   password_not_ends_with: String
+  postalCode: String
+
+  """All values that are not equal to given value."""
+  postalCode_not: String
+
+  """All values that are contained in given list."""
+  postalCode_in: [String!]
+
+  """All values that are not contained in given list."""
+  postalCode_not_in: [String!]
+
+  """All values less than the given value."""
+  postalCode_lt: String
+
+  """All values less than or equal the given value."""
+  postalCode_lte: String
+
+  """All values greater than the given value."""
+  postalCode_gt: String
+
+  """All values greater than or equal the given value."""
+  postalCode_gte: String
+
+  """All values containing the given string."""
+  postalCode_contains: String
+
+  """All values not containing the given string."""
+  postalCode_not_contains: String
+
+  """All values starting with the given string."""
+  postalCode_starts_with: String
+
+  """All values not starting with the given string."""
+  postalCode_not_starts_with: String
+
+  """All values ending with the given string."""
+  postalCode_ends_with: String
+
+  """All values not ending with the given string."""
+  postalCode_not_ends_with: String
   role: Role
 
   """All values that are not equal to given value."""
@@ -1669,12 +2026,26 @@ export type Role =   'ADMIN' |
 
 export type UserOrderByInput =   'id_ASC' |
   'id_DESC' |
-  'name_ASC' |
-  'name_DESC' |
+  'address_ASC' |
+  'address_DESC' |
+  'city_ASC' |
+  'city_DESC' |
+  'company_ASC' |
+  'company_DESC' |
+  'country_ASC' |
+  'country_DESC' |
   'email_ASC' |
   'email_DESC' |
+  'firstName_ASC' |
+  'firstName_DESC' |
+  'image_ASC' |
+  'image_DESC' |
+  'lastName_ASC' |
+  'lastName_DESC' |
   'password_ASC' |
   'password_DESC' |
+  'postalCode_ASC' |
+  'postalCode_DESC' |
   'role_ASC' |
   'role_DESC' |
   'createdAt_ASC' |
@@ -2165,9 +2536,16 @@ export interface PostWhereUniqueInput {
 
 export interface UserCreateInput {
   id?: ID_Input | null
-  name: String
+  address?: String | null
+  city?: String | null
+  company?: String | null
+  country?: String | null
   email: String
+  firstName: String
+  image?: String | null
+  lastName: String
   password: String
+  postalCode?: String | null
   role?: Role | null
   posts?: PostCreateManyWithoutAuthorInput | null
   comments?: CommentCreateManyWithoutAuthorInput | null
@@ -2185,18 +2563,32 @@ export interface UserCreateOneWithoutPostsInput {
 
 export interface UserCreateWithoutCommentsInput {
   id?: ID_Input | null
-  name: String
+  address?: String | null
+  city?: String | null
+  company?: String | null
+  country?: String | null
   email: String
+  firstName: String
+  image?: String | null
+  lastName: String
   password: String
+  postalCode?: String | null
   role?: Role | null
   posts?: PostCreateManyWithoutAuthorInput | null
 }
 
 export interface UserCreateWithoutPostsInput {
   id?: ID_Input | null
-  name: String
+  address?: String | null
+  city?: String | null
+  company?: String | null
+  country?: String | null
   email: String
+  firstName: String
+  image?: String | null
+  lastName: String
   password: String
+  postalCode?: String | null
   role?: Role | null
   comments?: CommentCreateManyWithoutAuthorInput | null
 }
@@ -2213,18 +2605,32 @@ export interface UserSubscriptionWhereInput {
 }
 
 export interface UserUpdateInput {
-  name?: String | null
+  address?: String | null
+  city?: String | null
+  company?: String | null
+  country?: String | null
   email?: String | null
+  firstName?: String | null
+  image?: String | null
+  lastName?: String | null
   password?: String | null
+  postalCode?: String | null
   role?: Role | null
   posts?: PostUpdateManyWithoutAuthorInput | null
   comments?: CommentUpdateManyWithoutAuthorInput | null
 }
 
 export interface UserUpdateManyMutationInput {
-  name?: String | null
+  address?: String | null
+  city?: String | null
+  company?: String | null
+  country?: String | null
   email?: String | null
+  firstName?: String | null
+  image?: String | null
+  lastName?: String | null
   password?: String | null
+  postalCode?: String | null
   role?: Role | null
 }
 
@@ -2243,17 +2649,31 @@ export interface UserUpdateOneRequiredWithoutPostsInput {
 }
 
 export interface UserUpdateWithoutCommentsDataInput {
-  name?: String | null
+  address?: String | null
+  city?: String | null
+  company?: String | null
+  country?: String | null
   email?: String | null
+  firstName?: String | null
+  image?: String | null
+  lastName?: String | null
   password?: String | null
+  postalCode?: String | null
   role?: Role | null
   posts?: PostUpdateManyWithoutAuthorInput | null
 }
 
 export interface UserUpdateWithoutPostsDataInput {
-  name?: String | null
+  address?: String | null
+  city?: String | null
+  company?: String | null
+  country?: String | null
   email?: String | null
+  firstName?: String | null
+  image?: String | null
+  lastName?: String | null
   password?: String | null
+  postalCode?: String | null
   role?: Role | null
   comments?: CommentUpdateManyWithoutAuthorInput | null
 }
@@ -2286,20 +2706,62 @@ export interface UserWhereInput {
   id_not_starts_with?: ID_Input | null
   id_ends_with?: ID_Input | null
   id_not_ends_with?: ID_Input | null
-  name?: String | null
-  name_not?: String | null
-  name_in?: String[] | String | null
-  name_not_in?: String[] | String | null
-  name_lt?: String | null
-  name_lte?: String | null
-  name_gt?: String | null
-  name_gte?: String | null
-  name_contains?: String | null
-  name_not_contains?: String | null
-  name_starts_with?: String | null
-  name_not_starts_with?: String | null
-  name_ends_with?: String | null
-  name_not_ends_with?: String | null
+  address?: String | null
+  address_not?: String | null
+  address_in?: String[] | String | null
+  address_not_in?: String[] | String | null
+  address_lt?: String | null
+  address_lte?: String | null
+  address_gt?: String | null
+  address_gte?: String | null
+  address_contains?: String | null
+  address_not_contains?: String | null
+  address_starts_with?: String | null
+  address_not_starts_with?: String | null
+  address_ends_with?: String | null
+  address_not_ends_with?: String | null
+  city?: String | null
+  city_not?: String | null
+  city_in?: String[] | String | null
+  city_not_in?: String[] | String | null
+  city_lt?: String | null
+  city_lte?: String | null
+  city_gt?: String | null
+  city_gte?: String | null
+  city_contains?: String | null
+  city_not_contains?: String | null
+  city_starts_with?: String | null
+  city_not_starts_with?: String | null
+  city_ends_with?: String | null
+  city_not_ends_with?: String | null
+  company?: String | null
+  company_not?: String | null
+  company_in?: String[] | String | null
+  company_not_in?: String[] | String | null
+  company_lt?: String | null
+  company_lte?: String | null
+  company_gt?: String | null
+  company_gte?: String | null
+  company_contains?: String | null
+  company_not_contains?: String | null
+  company_starts_with?: String | null
+  company_not_starts_with?: String | null
+  company_ends_with?: String | null
+  company_not_ends_with?: String | null
+  country?: String | null
+  country_not?: String | null
+  country_in?: String[] | String | null
+  country_not_in?: String[] | String | null
+  country_lt?: String | null
+  country_lte?: String | null
+  country_gt?: String | null
+  country_gte?: String | null
+  country_contains?: String | null
+  country_not_contains?: String | null
+  country_starts_with?: String | null
+  country_not_starts_with?: String | null
+  country_ends_with?: String | null
+  country_not_ends_with?: String | null
   email?: String | null
   email_not?: String | null
   email_in?: String[] | String | null
@@ -2314,6 +2776,48 @@ export interface UserWhereInput {
   email_not_starts_with?: String | null
   email_ends_with?: String | null
   email_not_ends_with?: String | null
+  firstName?: String | null
+  firstName_not?: String | null
+  firstName_in?: String[] | String | null
+  firstName_not_in?: String[] | String | null
+  firstName_lt?: String | null
+  firstName_lte?: String | null
+  firstName_gt?: String | null
+  firstName_gte?: String | null
+  firstName_contains?: String | null
+  firstName_not_contains?: String | null
+  firstName_starts_with?: String | null
+  firstName_not_starts_with?: String | null
+  firstName_ends_with?: String | null
+  firstName_not_ends_with?: String | null
+  image?: String | null
+  image_not?: String | null
+  image_in?: String[] | String | null
+  image_not_in?: String[] | String | null
+  image_lt?: String | null
+  image_lte?: String | null
+  image_gt?: String | null
+  image_gte?: String | null
+  image_contains?: String | null
+  image_not_contains?: String | null
+  image_starts_with?: String | null
+  image_not_starts_with?: String | null
+  image_ends_with?: String | null
+  image_not_ends_with?: String | null
+  lastName?: String | null
+  lastName_not?: String | null
+  lastName_in?: String[] | String | null
+  lastName_not_in?: String[] | String | null
+  lastName_lt?: String | null
+  lastName_lte?: String | null
+  lastName_gt?: String | null
+  lastName_gte?: String | null
+  lastName_contains?: String | null
+  lastName_not_contains?: String | null
+  lastName_starts_with?: String | null
+  lastName_not_starts_with?: String | null
+  lastName_ends_with?: String | null
+  lastName_not_ends_with?: String | null
   password?: String | null
   password_not?: String | null
   password_in?: String[] | String | null
@@ -2328,6 +2832,20 @@ export interface UserWhereInput {
   password_not_starts_with?: String | null
   password_ends_with?: String | null
   password_not_ends_with?: String | null
+  postalCode?: String | null
+  postalCode_not?: String | null
+  postalCode_in?: String[] | String | null
+  postalCode_not_in?: String[] | String | null
+  postalCode_lt?: String | null
+  postalCode_lte?: String | null
+  postalCode_gt?: String | null
+  postalCode_gte?: String | null
+  postalCode_contains?: String | null
+  postalCode_not_contains?: String | null
+  postalCode_starts_with?: String | null
+  postalCode_not_starts_with?: String | null
+  postalCode_ends_with?: String | null
+  postalCode_not_ends_with?: String | null
   role?: Role | null
   role_not?: Role | null
   role_in?: Role[] | Role | null
@@ -2486,9 +3004,16 @@ export interface PostSubscriptionPayload {
 
 export interface User extends Node {
   id: ID_Output
-  name: String
+  address?: String | null
+  city?: String | null
+  company?: String | null
+  country?: String | null
   email: String
+  firstName: String
+  image?: String | null
+  lastName: String
   password: String
+  postalCode?: String | null
   role: Role
   posts?: Array<Post> | null
   comments?: Array<Comment> | null
@@ -2517,9 +3042,16 @@ export interface UserEdge {
 
 export interface UserPreviousValues {
   id: ID_Output
-  name: String
+  address?: String | null
+  city?: String | null
+  company?: String | null
+  country?: String | null
   email: String
+  firstName: String
+  image?: String | null
+  lastName: String
   password: String
+  postalCode?: String | null
   role: Role
   createdAt: DateTime
   updatedAt: DateTime

@@ -73,36 +73,48 @@ export class UserResolver {
    */
   @UseGuards(GqlAuthGuard, RolesGuard('ADMIN'))
   @Mutation()
-  async createUser(@Args('data') { email, name, password, role }: UserCreateInput) {
-    const emailExists = await this.prisma.exists.User({ email });
+  async createUser(@Args('data') user: UserCreateInput) {
+    const emailExists = await this.prisma.exists.User({ email: user.email });
     if (emailExists) {
       throw Error('Email is already in use');
     }
-    const hashedPassword = await bcryptjs.hash(password, 10);
-    const user = await this.prisma.mutation.createUser({
-      data: { email, name, password: hashedPassword, role: role || Role.USER },
+    const hashedPassword = await bcryptjs.hash(user.password, 10);
+    return this.prisma.mutation.createUser({
+      data: { ...user, password: hashedPassword, role: user.role || Role.USER },
     });
-    return user;
   }
 
   @Mutation()
   @UseGuards(GqlAuthGuard, RolesGuard('USER'))
   async updateUser(
-    @Args('data') { name }: UserUpdateInput,
+    @Args('data')
+    { address, city, company, country, firstName, image, lastName, postalCode, role }: UserUpdateInput,
     @Args('where') { id }: UserWhereUniqueInput,
     @GetUser() user: User,
     @Info() info: any,
   ) {
-    if (user.role !== Role.ADMIN && user.id !== id) {
-      throw new UnauthorizedException('Forbidden');
+    let updateRole = true;
+    if (user.role !== Role.ADMIN) {
+      if (user.id !== id) {
+        throw new UnauthorizedException('Forbidden');
+      }
+      updateRole = false;
     }
     const found = await this.prisma.query.user({ where: { id } }, info);
     if (found) {
       return this.prisma.mutation.updateUser(
         {
           data: {
+            address: address || found.address,
+            city: city || found.city,
+            company: company || found.company,
+            country: country || found.country,
+            firstName: firstName || found.firstName,
+            image: image || found.image,
+            lastName: lastName || found.lastName,
+            postalCode: postalCode || found.postalCode,
+            role: updateRole && role ? role : found.role,
             email: found.email,
-            name: name || found.name,
             password: found.password,
           },
           where: { id },

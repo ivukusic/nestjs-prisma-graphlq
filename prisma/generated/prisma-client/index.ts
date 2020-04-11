@@ -208,12 +208,26 @@ export type CommentOrderByInput =
 export type UserOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
+  | "address_ASC"
+  | "address_DESC"
+  | "city_ASC"
+  | "city_DESC"
+  | "company_ASC"
+  | "company_DESC"
+  | "country_ASC"
+  | "country_DESC"
   | "email_ASC"
   | "email_DESC"
+  | "firstName_ASC"
+  | "firstName_DESC"
+  | "image_ASC"
+  | "image_DESC"
+  | "lastName_ASC"
+  | "lastName_DESC"
   | "password_ASC"
   | "password_DESC"
+  | "postalCode_ASC"
+  | "postalCode_DESC"
   | "role_ASC"
   | "role_DESC"
   | "createdAt_ASC"
@@ -312,20 +326,62 @@ export interface UserWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
+  address?: Maybe<String>;
+  address_not?: Maybe<String>;
+  address_in?: Maybe<String[] | String>;
+  address_not_in?: Maybe<String[] | String>;
+  address_lt?: Maybe<String>;
+  address_lte?: Maybe<String>;
+  address_gt?: Maybe<String>;
+  address_gte?: Maybe<String>;
+  address_contains?: Maybe<String>;
+  address_not_contains?: Maybe<String>;
+  address_starts_with?: Maybe<String>;
+  address_not_starts_with?: Maybe<String>;
+  address_ends_with?: Maybe<String>;
+  address_not_ends_with?: Maybe<String>;
+  city?: Maybe<String>;
+  city_not?: Maybe<String>;
+  city_in?: Maybe<String[] | String>;
+  city_not_in?: Maybe<String[] | String>;
+  city_lt?: Maybe<String>;
+  city_lte?: Maybe<String>;
+  city_gt?: Maybe<String>;
+  city_gte?: Maybe<String>;
+  city_contains?: Maybe<String>;
+  city_not_contains?: Maybe<String>;
+  city_starts_with?: Maybe<String>;
+  city_not_starts_with?: Maybe<String>;
+  city_ends_with?: Maybe<String>;
+  city_not_ends_with?: Maybe<String>;
+  company?: Maybe<String>;
+  company_not?: Maybe<String>;
+  company_in?: Maybe<String[] | String>;
+  company_not_in?: Maybe<String[] | String>;
+  company_lt?: Maybe<String>;
+  company_lte?: Maybe<String>;
+  company_gt?: Maybe<String>;
+  company_gte?: Maybe<String>;
+  company_contains?: Maybe<String>;
+  company_not_contains?: Maybe<String>;
+  company_starts_with?: Maybe<String>;
+  company_not_starts_with?: Maybe<String>;
+  company_ends_with?: Maybe<String>;
+  company_not_ends_with?: Maybe<String>;
+  country?: Maybe<String>;
+  country_not?: Maybe<String>;
+  country_in?: Maybe<String[] | String>;
+  country_not_in?: Maybe<String[] | String>;
+  country_lt?: Maybe<String>;
+  country_lte?: Maybe<String>;
+  country_gt?: Maybe<String>;
+  country_gte?: Maybe<String>;
+  country_contains?: Maybe<String>;
+  country_not_contains?: Maybe<String>;
+  country_starts_with?: Maybe<String>;
+  country_not_starts_with?: Maybe<String>;
+  country_ends_with?: Maybe<String>;
+  country_not_ends_with?: Maybe<String>;
   email?: Maybe<String>;
   email_not?: Maybe<String>;
   email_in?: Maybe<String[] | String>;
@@ -340,6 +396,48 @@ export interface UserWhereInput {
   email_not_starts_with?: Maybe<String>;
   email_ends_with?: Maybe<String>;
   email_not_ends_with?: Maybe<String>;
+  firstName?: Maybe<String>;
+  firstName_not?: Maybe<String>;
+  firstName_in?: Maybe<String[] | String>;
+  firstName_not_in?: Maybe<String[] | String>;
+  firstName_lt?: Maybe<String>;
+  firstName_lte?: Maybe<String>;
+  firstName_gt?: Maybe<String>;
+  firstName_gte?: Maybe<String>;
+  firstName_contains?: Maybe<String>;
+  firstName_not_contains?: Maybe<String>;
+  firstName_starts_with?: Maybe<String>;
+  firstName_not_starts_with?: Maybe<String>;
+  firstName_ends_with?: Maybe<String>;
+  firstName_not_ends_with?: Maybe<String>;
+  image?: Maybe<String>;
+  image_not?: Maybe<String>;
+  image_in?: Maybe<String[] | String>;
+  image_not_in?: Maybe<String[] | String>;
+  image_lt?: Maybe<String>;
+  image_lte?: Maybe<String>;
+  image_gt?: Maybe<String>;
+  image_gte?: Maybe<String>;
+  image_contains?: Maybe<String>;
+  image_not_contains?: Maybe<String>;
+  image_starts_with?: Maybe<String>;
+  image_not_starts_with?: Maybe<String>;
+  image_ends_with?: Maybe<String>;
+  image_not_ends_with?: Maybe<String>;
+  lastName?: Maybe<String>;
+  lastName_not?: Maybe<String>;
+  lastName_in?: Maybe<String[] | String>;
+  lastName_not_in?: Maybe<String[] | String>;
+  lastName_lt?: Maybe<String>;
+  lastName_lte?: Maybe<String>;
+  lastName_gt?: Maybe<String>;
+  lastName_gte?: Maybe<String>;
+  lastName_contains?: Maybe<String>;
+  lastName_not_contains?: Maybe<String>;
+  lastName_starts_with?: Maybe<String>;
+  lastName_not_starts_with?: Maybe<String>;
+  lastName_ends_with?: Maybe<String>;
+  lastName_not_ends_with?: Maybe<String>;
   password?: Maybe<String>;
   password_not?: Maybe<String>;
   password_in?: Maybe<String[] | String>;
@@ -354,6 +452,20 @@ export interface UserWhereInput {
   password_not_starts_with?: Maybe<String>;
   password_ends_with?: Maybe<String>;
   password_not_ends_with?: Maybe<String>;
+  postalCode?: Maybe<String>;
+  postalCode_not?: Maybe<String>;
+  postalCode_in?: Maybe<String[] | String>;
+  postalCode_not_in?: Maybe<String[] | String>;
+  postalCode_lt?: Maybe<String>;
+  postalCode_lte?: Maybe<String>;
+  postalCode_gt?: Maybe<String>;
+  postalCode_gte?: Maybe<String>;
+  postalCode_contains?: Maybe<String>;
+  postalCode_not_contains?: Maybe<String>;
+  postalCode_starts_with?: Maybe<String>;
+  postalCode_not_starts_with?: Maybe<String>;
+  postalCode_ends_with?: Maybe<String>;
+  postalCode_not_ends_with?: Maybe<String>;
   role?: Maybe<Role>;
   role_not?: Maybe<Role>;
   role_in?: Maybe<Role[] | Role>;
@@ -460,9 +572,16 @@ export interface UserCreateOneWithoutCommentsInput {
 
 export interface UserCreateWithoutCommentsInput {
   id?: Maybe<ID_Input>;
-  name: String;
+  address?: Maybe<String>;
+  city?: Maybe<String>;
+  company?: Maybe<String>;
+  country?: Maybe<String>;
   email: String;
+  firstName: String;
+  image?: Maybe<String>;
+  lastName: String;
   password: String;
+  postalCode?: Maybe<String>;
   role?: Maybe<Role>;
   posts?: Maybe<PostCreateManyWithoutAuthorInput>;
 }
@@ -513,9 +632,16 @@ export interface UserCreateOneWithoutPostsInput {
 
 export interface UserCreateWithoutPostsInput {
   id?: Maybe<ID_Input>;
-  name: String;
+  address?: Maybe<String>;
+  city?: Maybe<String>;
+  company?: Maybe<String>;
+  country?: Maybe<String>;
   email: String;
+  firstName: String;
+  image?: Maybe<String>;
+  lastName: String;
   password: String;
+  postalCode?: Maybe<String>;
   role?: Maybe<Role>;
   comments?: Maybe<CommentCreateManyWithoutAuthorInput>;
 }
@@ -547,9 +673,16 @@ export interface UserUpdateOneRequiredWithoutCommentsInput {
 }
 
 export interface UserUpdateWithoutCommentsDataInput {
-  name?: Maybe<String>;
+  address?: Maybe<String>;
+  city?: Maybe<String>;
+  company?: Maybe<String>;
+  country?: Maybe<String>;
   email?: Maybe<String>;
+  firstName?: Maybe<String>;
+  image?: Maybe<String>;
+  lastName?: Maybe<String>;
   password?: Maybe<String>;
+  postalCode?: Maybe<String>;
   role?: Maybe<Role>;
   posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
 }
@@ -794,9 +927,16 @@ export interface UserUpdateOneRequiredWithoutPostsInput {
 }
 
 export interface UserUpdateWithoutPostsDataInput {
-  name?: Maybe<String>;
+  address?: Maybe<String>;
+  city?: Maybe<String>;
+  company?: Maybe<String>;
+  country?: Maybe<String>;
   email?: Maybe<String>;
+  firstName?: Maybe<String>;
+  image?: Maybe<String>;
+  lastName?: Maybe<String>;
   password?: Maybe<String>;
+  postalCode?: Maybe<String>;
   role?: Maybe<Role>;
   comments?: Maybe<CommentUpdateManyWithoutAuthorInput>;
 }
@@ -879,27 +1019,48 @@ export interface PostUpdateManyMutationInput {
 
 export interface UserCreateInput {
   id?: Maybe<ID_Input>;
-  name: String;
+  address?: Maybe<String>;
+  city?: Maybe<String>;
+  company?: Maybe<String>;
+  country?: Maybe<String>;
   email: String;
+  firstName: String;
+  image?: Maybe<String>;
+  lastName: String;
   password: String;
+  postalCode?: Maybe<String>;
   role?: Maybe<Role>;
   posts?: Maybe<PostCreateManyWithoutAuthorInput>;
   comments?: Maybe<CommentCreateManyWithoutAuthorInput>;
 }
 
 export interface UserUpdateInput {
-  name?: Maybe<String>;
+  address?: Maybe<String>;
+  city?: Maybe<String>;
+  company?: Maybe<String>;
+  country?: Maybe<String>;
   email?: Maybe<String>;
+  firstName?: Maybe<String>;
+  image?: Maybe<String>;
+  lastName?: Maybe<String>;
   password?: Maybe<String>;
+  postalCode?: Maybe<String>;
   role?: Maybe<Role>;
   posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
   comments?: Maybe<CommentUpdateManyWithoutAuthorInput>;
 }
 
 export interface UserUpdateManyMutationInput {
-  name?: Maybe<String>;
+  address?: Maybe<String>;
+  city?: Maybe<String>;
+  company?: Maybe<String>;
+  country?: Maybe<String>;
   email?: Maybe<String>;
+  firstName?: Maybe<String>;
+  image?: Maybe<String>;
+  lastName?: Maybe<String>;
   password?: Maybe<String>;
+  postalCode?: Maybe<String>;
   role?: Maybe<Role>;
 }
 
@@ -980,9 +1141,16 @@ export interface CommentNullablePromise
 
 export interface User {
   id: ID_Output;
-  name: String;
+  address?: String;
+  city?: String;
+  company?: String;
+  country?: String;
   email: String;
+  firstName: String;
+  image?: String;
+  lastName: String;
   password: String;
+  postalCode?: String;
   role: Role;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -990,9 +1158,16 @@ export interface User {
 
 export interface UserPromise extends Promise<User>, Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  address: () => Promise<String>;
+  city: () => Promise<String>;
+  company: () => Promise<String>;
+  country: () => Promise<String>;
   email: () => Promise<String>;
+  firstName: () => Promise<String>;
+  image: () => Promise<String>;
+  lastName: () => Promise<String>;
   password: () => Promise<String>;
+  postalCode: () => Promise<String>;
   role: () => Promise<Role>;
   posts: <T = FragmentableArray<Post>>(args?: {
     where?: PostWhereInput;
@@ -1020,9 +1195,16 @@ export interface UserSubscription
   extends Promise<AsyncIterator<User>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
+  address: () => Promise<AsyncIterator<String>>;
+  city: () => Promise<AsyncIterator<String>>;
+  company: () => Promise<AsyncIterator<String>>;
+  country: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  image: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
+  postalCode: () => Promise<AsyncIterator<String>>;
   role: () => Promise<AsyncIterator<Role>>;
   posts: <T = Promise<AsyncIterator<PostSubscription>>>(args?: {
     where?: PostWhereInput;
@@ -1050,9 +1232,16 @@ export interface UserNullablePromise
   extends Promise<User | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  address: () => Promise<String>;
+  city: () => Promise<String>;
+  company: () => Promise<String>;
+  country: () => Promise<String>;
   email: () => Promise<String>;
+  firstName: () => Promise<String>;
+  image: () => Promise<String>;
+  lastName: () => Promise<String>;
   password: () => Promise<String>;
+  postalCode: () => Promise<String>;
   role: () => Promise<Role>;
   posts: <T = FragmentableArray<Post>>(args?: {
     where?: PostWhereInput;
@@ -1480,9 +1669,16 @@ export interface UserSubscriptionPayloadSubscription
 
 export interface UserPreviousValues {
   id: ID_Output;
-  name: String;
+  address?: String;
+  city?: String;
+  company?: String;
+  country?: String;
   email: String;
+  firstName: String;
+  image?: String;
+  lastName: String;
   password: String;
+  postalCode?: String;
   role: Role;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -1492,9 +1688,16 @@ export interface UserPreviousValuesPromise
   extends Promise<UserPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  address: () => Promise<String>;
+  city: () => Promise<String>;
+  company: () => Promise<String>;
+  country: () => Promise<String>;
   email: () => Promise<String>;
+  firstName: () => Promise<String>;
+  image: () => Promise<String>;
+  lastName: () => Promise<String>;
   password: () => Promise<String>;
+  postalCode: () => Promise<String>;
   role: () => Promise<Role>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -1504,9 +1707,16 @@ export interface UserPreviousValuesSubscription
   extends Promise<AsyncIterator<UserPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
+  address: () => Promise<AsyncIterator<String>>;
+  city: () => Promise<AsyncIterator<String>>;
+  company: () => Promise<AsyncIterator<String>>;
+  country: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  image: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
+  postalCode: () => Promise<AsyncIterator<String>>;
   role: () => Promise<AsyncIterator<Role>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;

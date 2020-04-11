@@ -48,12 +48,26 @@ export enum Role {
 export enum UserOrderByInput {
     id_ASC = "id_ASC",
     id_DESC = "id_DESC",
-    name_ASC = "name_ASC",
-    name_DESC = "name_DESC",
+    address_ASC = "address_ASC",
+    address_DESC = "address_DESC",
+    city_ASC = "city_ASC",
+    city_DESC = "city_DESC",
+    company_ASC = "company_ASC",
+    company_DESC = "company_DESC",
+    country_ASC = "country_ASC",
+    country_DESC = "country_DESC",
     email_ASC = "email_ASC",
     email_DESC = "email_DESC",
+    firstName_ASC = "firstName_ASC",
+    firstName_DESC = "firstName_DESC",
+    image_ASC = "image_ASC",
+    image_DESC = "image_DESC",
+    lastName_ASC = "lastName_ASC",
+    lastName_DESC = "lastName_DESC",
     password_ASC = "password_ASC",
     password_DESC = "password_DESC",
+    postalCode_ASC = "postalCode_ASC",
+    postalCode_DESC = "postalCode_DESC",
     role_ASC = "role_ASC",
     role_DESC = "role_DESC",
     createdAt_ASC = "createdAt_ASC",
@@ -576,9 +590,16 @@ export class PostWhereUniqueWithAuthorInput {
 }
 
 export class SignUpInput {
+    address?: string;
+    city?: string;
+    company?: string;
+    country?: string;
     email: string;
-    name: string;
+    firstName: string;
+    image?: string;
+    lastName: string;
     password: string;
+    postalCode?: string;
 }
 
 export class UserArgs {
@@ -593,9 +614,16 @@ export class UserArgs {
 
 export class UserCreateInput {
     id?: string;
-    name: string;
+    address?: string;
+    city?: string;
+    company?: string;
+    country?: string;
     email: string;
+    firstName: string;
+    image?: string;
+    lastName: string;
     password: string;
+    postalCode?: string;
     role?: Role;
     posts?: PostCreateManyWithoutAuthorInput;
     comments?: CommentCreateManyWithoutAuthorInput;
@@ -613,18 +641,32 @@ export class UserCreateOneWithoutPostsInput {
 
 export class UserCreateWithoutCommentsInput {
     id?: string;
-    name: string;
+    address?: string;
+    city?: string;
+    company?: string;
+    country?: string;
     email: string;
+    firstName: string;
+    image?: string;
+    lastName: string;
     password: string;
+    postalCode?: string;
     role?: Role;
     posts?: PostCreateManyWithoutAuthorInput;
 }
 
 export class UserCreateWithoutPostsInput {
     id?: string;
-    name: string;
+    address?: string;
+    city?: string;
+    company?: string;
+    country?: string;
     email: string;
+    firstName: string;
+    image?: string;
+    lastName: string;
     password: string;
+    postalCode?: string;
     role?: Role;
     comments?: CommentCreateManyWithoutAuthorInput;
 }
@@ -645,18 +687,32 @@ export class UserSubscriptionWhereInput {
 }
 
 export class UserUpdateInput {
-    name?: string;
+    address?: string;
+    city?: string;
+    company?: string;
+    country?: string;
     email?: string;
+    firstName?: string;
+    image?: string;
+    lastName?: string;
     password?: string;
+    postalCode?: string;
     role?: Role;
     posts?: PostUpdateManyWithoutAuthorInput;
     comments?: CommentUpdateManyWithoutAuthorInput;
 }
 
 export class UserUpdateManyMutationInput {
-    name?: string;
+    address?: string;
+    city?: string;
+    company?: string;
+    country?: string;
     email?: string;
+    firstName?: string;
+    image?: string;
+    lastName?: string;
     password?: string;
+    postalCode?: string;
     role?: Role;
 }
 
@@ -675,17 +731,31 @@ export class UserUpdateOneRequiredWithoutPostsInput {
 }
 
 export class UserUpdateWithoutCommentsDataInput {
-    name?: string;
+    address?: string;
+    city?: string;
+    company?: string;
+    country?: string;
     email?: string;
+    firstName?: string;
+    image?: string;
+    lastName?: string;
     password?: string;
+    postalCode?: string;
     role?: Role;
     posts?: PostUpdateManyWithoutAuthorInput;
 }
 
 export class UserUpdateWithoutPostsDataInput {
-    name?: string;
+    address?: string;
+    city?: string;
+    company?: string;
+    country?: string;
     email?: string;
+    firstName?: string;
+    image?: string;
+    lastName?: string;
     password?: string;
+    postalCode?: string;
     role?: Role;
     comments?: CommentUpdateManyWithoutAuthorInput;
 }
@@ -718,20 +788,62 @@ export class UserWhereInput {
     id_not_starts_with?: string;
     id_ends_with?: string;
     id_not_ends_with?: string;
-    name?: string;
-    name_not?: string;
-    name_in?: string[];
-    name_not_in?: string[];
-    name_lt?: string;
-    name_lte?: string;
-    name_gt?: string;
-    name_gte?: string;
-    name_contains?: string;
-    name_not_contains?: string;
-    name_starts_with?: string;
-    name_not_starts_with?: string;
-    name_ends_with?: string;
-    name_not_ends_with?: string;
+    address?: string;
+    address_not?: string;
+    address_in?: string[];
+    address_not_in?: string[];
+    address_lt?: string;
+    address_lte?: string;
+    address_gt?: string;
+    address_gte?: string;
+    address_contains?: string;
+    address_not_contains?: string;
+    address_starts_with?: string;
+    address_not_starts_with?: string;
+    address_ends_with?: string;
+    address_not_ends_with?: string;
+    city?: string;
+    city_not?: string;
+    city_in?: string[];
+    city_not_in?: string[];
+    city_lt?: string;
+    city_lte?: string;
+    city_gt?: string;
+    city_gte?: string;
+    city_contains?: string;
+    city_not_contains?: string;
+    city_starts_with?: string;
+    city_not_starts_with?: string;
+    city_ends_with?: string;
+    city_not_ends_with?: string;
+    company?: string;
+    company_not?: string;
+    company_in?: string[];
+    company_not_in?: string[];
+    company_lt?: string;
+    company_lte?: string;
+    company_gt?: string;
+    company_gte?: string;
+    company_contains?: string;
+    company_not_contains?: string;
+    company_starts_with?: string;
+    company_not_starts_with?: string;
+    company_ends_with?: string;
+    company_not_ends_with?: string;
+    country?: string;
+    country_not?: string;
+    country_in?: string[];
+    country_not_in?: string[];
+    country_lt?: string;
+    country_lte?: string;
+    country_gt?: string;
+    country_gte?: string;
+    country_contains?: string;
+    country_not_contains?: string;
+    country_starts_with?: string;
+    country_not_starts_with?: string;
+    country_ends_with?: string;
+    country_not_ends_with?: string;
     email?: string;
     email_not?: string;
     email_in?: string[];
@@ -746,6 +858,48 @@ export class UserWhereInput {
     email_not_starts_with?: string;
     email_ends_with?: string;
     email_not_ends_with?: string;
+    firstName?: string;
+    firstName_not?: string;
+    firstName_in?: string[];
+    firstName_not_in?: string[];
+    firstName_lt?: string;
+    firstName_lte?: string;
+    firstName_gt?: string;
+    firstName_gte?: string;
+    firstName_contains?: string;
+    firstName_not_contains?: string;
+    firstName_starts_with?: string;
+    firstName_not_starts_with?: string;
+    firstName_ends_with?: string;
+    firstName_not_ends_with?: string;
+    image?: string;
+    image_not?: string;
+    image_in?: string[];
+    image_not_in?: string[];
+    image_lt?: string;
+    image_lte?: string;
+    image_gt?: string;
+    image_gte?: string;
+    image_contains?: string;
+    image_not_contains?: string;
+    image_starts_with?: string;
+    image_not_starts_with?: string;
+    image_ends_with?: string;
+    image_not_ends_with?: string;
+    lastName?: string;
+    lastName_not?: string;
+    lastName_in?: string[];
+    lastName_not_in?: string[];
+    lastName_lt?: string;
+    lastName_lte?: string;
+    lastName_gt?: string;
+    lastName_gte?: string;
+    lastName_contains?: string;
+    lastName_not_contains?: string;
+    lastName_starts_with?: string;
+    lastName_not_starts_with?: string;
+    lastName_ends_with?: string;
+    lastName_not_ends_with?: string;
     password?: string;
     password_not?: string;
     password_in?: string[];
@@ -760,6 +914,20 @@ export class UserWhereInput {
     password_not_starts_with?: string;
     password_ends_with?: string;
     password_not_ends_with?: string;
+    postalCode?: string;
+    postalCode_not?: string;
+    postalCode_in?: string[];
+    postalCode_not_in?: string[];
+    postalCode_lt?: string;
+    postalCode_lte?: string;
+    postalCode_gt?: string;
+    postalCode_gte?: string;
+    postalCode_contains?: string;
+    postalCode_not_contains?: string;
+    postalCode_starts_with?: string;
+    postalCode_not_starts_with?: string;
+    postalCode_ends_with?: string;
+    postalCode_not_ends_with?: string;
     role?: Role;
     role_not?: Role;
     role_in?: Role[];
@@ -951,22 +1119,38 @@ export abstract class ISubscription {
 
 export class User implements Node {
     id: string;
-    name: string;
+    address?: string;
+    city?: string;
+    company?: string;
+    country?: string;
     email: string;
+    firstName: string;
+    image?: string;
+    lastName: string;
     password: string;
+    postalCode?: string;
     role: Role;
     posts?: Post[];
     comments?: Comment[];
     createdAt: DateTime;
     updatedAt: DateTime;
     postsConnection: PostConnection;
+    commentsConnection: CommentConnection;
     jwt?: string;
 }
 
 export class UserBasic {
     id: string;
-    name: string;
+    address?: string;
+    city?: string;
+    company?: string;
+    country?: string;
     email: string;
+    firstName: string;
+    image?: string;
+    lastName: string;
+    password: string;
+    postalCode?: string;
     role: Role;
 }
 
@@ -983,9 +1167,16 @@ export class UserEdge {
 
 export class UserPreviousValues {
     id: string;
-    name: string;
+    address?: string;
+    city?: string;
+    company?: string;
+    country?: string;
     email: string;
+    firstName: string;
+    image?: string;
+    lastName: string;
     password: string;
+    postalCode?: string;
     role: Role;
     createdAt: DateTime;
     updatedAt: DateTime;

@@ -7,9 +7,16 @@ enum Role {
 
 type User {
   id: ID! @id
-  name: String!
+  address: String
+  city: String
+  company: String
+  country: String
   email: String! @unique
+  firstName: String!
+  image: String
+  lastName: String!
   password: String!
+  postalCode: String
   role: Role! @default(value: GUEST)
   posts: [Post!]! @relation(name: "PostToUser", onDelete: CASCADE)
   comments: [Comment!]! @relation(name: "CommentToUser", onDelete: CASCADE)
