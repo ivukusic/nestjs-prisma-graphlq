@@ -8,8 +8,12 @@ input PostArgs {
   last: Int
 }
 
+extend type PostConnection {
+  totalCount: Int
+}
+
 type Post implements Node {
-  id: ID!
+  id: Int!
   title: String!
   body: String!
   published: Boolean!
@@ -37,7 +41,7 @@ type Post implements Node {
 }
 
 input PostWhereUniqueWithAuthorInput {
-  id: ID!
+  id: Int!
   author: UserCreateOneWithoutCommentsInput
 }
 

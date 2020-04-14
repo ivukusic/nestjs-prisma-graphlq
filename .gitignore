@@ -17,7 +17,7 @@ lerna-debug.log*
 /coverage
 /.nyc_output
 
-# IDEs and editors
+# IntEs and editors
 /.idea
 .project
 .classpath
@@ -26,7 +26,7 @@ lerna-debug.log*
 .settings/
 *.sublime-workspace
 
-# IDE - VSCode
+# IntE - VSCode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json

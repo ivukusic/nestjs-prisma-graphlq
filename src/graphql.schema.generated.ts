@@ -66,6 +66,8 @@ export enum UserOrderByInput {
     lastName_DESC = "lastName_DESC",
     password_ASC = "password_ASC",
     password_DESC = "password_DESC",
+    description_ASC = "description_ASC",
+    description_DESC = "description_DESC",
     postalCode_ASC = "postalCode_ASC",
     postalCode_DESC = "postalCode_DESC",
     role_ASC = "role_ASC",
@@ -87,10 +89,10 @@ export class CommentArgs {
 }
 
 export class CommentCreateInput {
-    id?: string;
     text: string;
     author: UserCreateOneWithoutCommentsInput;
     post: PostCreateOneWithoutCommentsInput;
+    id?: number;
     updatedAt?: DateTime;
     createdAt?: DateTime;
 }
@@ -106,13 +108,11 @@ export class CommentCreateManyWithoutPostInput {
 }
 
 export class CommentCreateWithoutAuthorInput {
-    id?: string;
     text: string;
     post: PostCreateOneWithoutCommentsInput;
 }
 
 export class CommentCreateWithoutPostInput {
-    id?: string;
     text: string;
     author: UserCreateOneWithoutCommentsInput;
 }
@@ -121,20 +121,14 @@ export class CommentScalarWhereInput {
     AND?: CommentScalarWhereInput[];
     OR?: CommentScalarWhereInput[];
     NOT?: CommentScalarWhereInput[];
-    id?: string;
-    id_not?: string;
-    id_in?: string[];
-    id_not_in?: string[];
-    id_lt?: string;
-    id_lte?: string;
-    id_gt?: string;
-    id_gte?: string;
-    id_contains?: string;
-    id_not_contains?: string;
-    id_starts_with?: string;
-    id_not_starts_with?: string;
-    id_ends_with?: string;
-    id_not_ends_with?: string;
+    id?: number;
+    id_not?: number;
+    id_in?: number[];
+    id_not_in?: number[];
+    id_lt?: number;
+    id_lte?: number;
+    id_gt?: number;
+    id_gte?: number;
     text?: string;
     text_not?: string;
     text_in?: string[];
@@ -257,20 +251,14 @@ export class CommentWhereInput {
     AND?: CommentWhereInput[];
     OR?: CommentWhereInput[];
     NOT?: CommentWhereInput[];
-    id?: string;
-    id_not?: string;
-    id_in?: string[];
-    id_not_in?: string[];
-    id_lt?: string;
-    id_lte?: string;
-    id_gt?: string;
-    id_gte?: string;
-    id_contains?: string;
-    id_not_contains?: string;
-    id_starts_with?: string;
-    id_not_starts_with?: string;
-    id_ends_with?: string;
-    id_not_ends_with?: string;
+    id?: number;
+    id_not?: number;
+    id_in?: number[];
+    id_not_in?: number[];
+    id_lt?: number;
+    id_lte?: number;
+    id_gt?: number;
+    id_gte?: number;
     text?: string;
     text_not?: string;
     text_in?: string[];
@@ -306,7 +294,7 @@ export class CommentWhereInput {
 }
 
 export class CommentWhereUniqueInput {
-    id?: string;
+    id?: number;
 }
 
 export class LoginInput {
@@ -325,7 +313,6 @@ export class PostArgs {
 }
 
 export class PostCreateInput {
-    id?: string;
     title: string;
     body: string;
     published: boolean;
@@ -344,7 +331,6 @@ export class PostCreateOneWithoutCommentsInput {
 }
 
 export class PostCreateWithoutAuthorInput {
-    id?: string;
     title: string;
     body: string;
     published: boolean;
@@ -352,7 +338,6 @@ export class PostCreateWithoutAuthorInput {
 }
 
 export class PostCreateWithoutCommentsInput {
-    id?: string;
     title: string;
     body: string;
     published: boolean;
@@ -363,20 +348,14 @@ export class PostScalarWhereInput {
     AND?: PostScalarWhereInput[];
     OR?: PostScalarWhereInput[];
     NOT?: PostScalarWhereInput[];
-    id?: string;
-    id_not?: string;
-    id_in?: string[];
-    id_not_in?: string[];
-    id_lt?: string;
-    id_lte?: string;
-    id_gt?: string;
-    id_gte?: string;
-    id_contains?: string;
-    id_not_contains?: string;
-    id_starts_with?: string;
-    id_not_starts_with?: string;
-    id_ends_with?: string;
-    id_not_ends_with?: string;
+    id?: number;
+    id_not?: number;
+    id_in?: number[];
+    id_not_in?: number[];
+    id_lt?: number;
+    id_lte?: number;
+    id_gt?: number;
+    id_gte?: number;
     title?: string;
     title_not?: string;
     title_in?: string[];
@@ -514,20 +493,14 @@ export class PostWhereInput {
     AND?: PostWhereInput[];
     OR?: PostWhereInput[];
     NOT?: PostWhereInput[];
-    id?: string;
-    id_not?: string;
-    id_in?: string[];
-    id_not_in?: string[];
-    id_lt?: string;
-    id_lte?: string;
-    id_gt?: string;
-    id_gte?: string;
-    id_contains?: string;
-    id_not_contains?: string;
-    id_starts_with?: string;
-    id_not_starts_with?: string;
-    id_ends_with?: string;
-    id_not_ends_with?: string;
+    id?: number;
+    id_not?: number;
+    id_in?: number[];
+    id_not_in?: number[];
+    id_lt?: number;
+    id_lte?: number;
+    id_gt?: number;
+    id_gte?: number;
     title?: string;
     title_not?: string;
     title_in?: string[];
@@ -581,11 +554,11 @@ export class PostWhereInput {
 }
 
 export class PostWhereUniqueInput {
-    id?: string;
+    id?: number;
 }
 
 export class PostWhereUniqueWithAuthorInput {
-    id: string;
+    id: number;
     author?: UserCreateOneWithoutCommentsInput;
 }
 
@@ -600,6 +573,7 @@ export class SignUpInput {
     lastName: string;
     password: string;
     postalCode?: string;
+    description?: string;
 }
 
 export class UserArgs {
@@ -613,7 +587,6 @@ export class UserArgs {
 }
 
 export class UserCreateInput {
-    id?: string;
     address?: string;
     city?: string;
     company?: string;
@@ -623,6 +596,7 @@ export class UserCreateInput {
     image?: string;
     lastName: string;
     password: string;
+    description?: string;
     postalCode?: string;
     role?: Role;
     posts?: PostCreateManyWithoutAuthorInput;
@@ -640,7 +614,6 @@ export class UserCreateOneWithoutPostsInput {
 }
 
 export class UserCreateWithoutCommentsInput {
-    id?: string;
     address?: string;
     city?: string;
     company?: string;
@@ -650,13 +623,13 @@ export class UserCreateWithoutCommentsInput {
     image?: string;
     lastName: string;
     password: string;
+    description?: string;
     postalCode?: string;
     role?: Role;
     posts?: PostCreateManyWithoutAuthorInput;
 }
 
 export class UserCreateWithoutPostsInput {
-    id?: string;
     address?: string;
     city?: string;
     company?: string;
@@ -666,13 +639,14 @@ export class UserCreateWithoutPostsInput {
     image?: string;
     lastName: string;
     password: string;
+    description?: string;
     postalCode?: string;
     role?: Role;
     comments?: CommentCreateManyWithoutAuthorInput;
 }
 
 export class UserDeleteWhereInput {
-    id: string;
+    id: number;
 }
 
 export class UserSubscriptionWhereInput {
@@ -696,6 +670,7 @@ export class UserUpdateInput {
     image?: string;
     lastName?: string;
     password?: string;
+    description?: string;
     postalCode?: string;
     role?: Role;
     posts?: PostUpdateManyWithoutAuthorInput;
@@ -712,6 +687,7 @@ export class UserUpdateManyMutationInput {
     image?: string;
     lastName?: string;
     password?: string;
+    description?: string;
     postalCode?: string;
     role?: Role;
 }
@@ -740,6 +716,7 @@ export class UserUpdateWithoutCommentsDataInput {
     image?: string;
     lastName?: string;
     password?: string;
+    description?: string;
     postalCode?: string;
     role?: Role;
     posts?: PostUpdateManyWithoutAuthorInput;
@@ -755,6 +732,7 @@ export class UserUpdateWithoutPostsDataInput {
     image?: string;
     lastName?: string;
     password?: string;
+    description?: string;
     postalCode?: string;
     role?: Role;
     comments?: CommentUpdateManyWithoutAuthorInput;
@@ -774,20 +752,14 @@ export class UserWhereInput {
     AND?: UserWhereInput[];
     OR?: UserWhereInput[];
     NOT?: UserWhereInput[];
-    id?: string;
-    id_not?: string;
-    id_in?: string[];
-    id_not_in?: string[];
-    id_lt?: string;
-    id_lte?: string;
-    id_gt?: string;
-    id_gte?: string;
-    id_contains?: string;
-    id_not_contains?: string;
-    id_starts_with?: string;
-    id_not_starts_with?: string;
-    id_ends_with?: string;
-    id_not_ends_with?: string;
+    id?: number;
+    id_not?: number;
+    id_in?: number[];
+    id_not_in?: number[];
+    id_lt?: number;
+    id_lte?: number;
+    id_gt?: number;
+    id_gte?: number;
     address?: string;
     address_not?: string;
     address_in?: string[];
@@ -914,6 +886,20 @@ export class UserWhereInput {
     password_not_starts_with?: string;
     password_ends_with?: string;
     password_not_ends_with?: string;
+    description?: string;
+    description_not?: string;
+    description_in?: string[];
+    description_not_in?: string[];
+    description_lt?: string;
+    description_lte?: string;
+    description_gt?: string;
+    description_gte?: string;
+    description_contains?: string;
+    description_not_contains?: string;
+    description_starts_with?: string;
+    description_not_starts_with?: string;
+    description_ends_with?: string;
+    description_not_ends_with?: string;
     postalCode?: string;
     postalCode_not?: string;
     postalCode_in?: string[];
@@ -957,12 +943,12 @@ export class UserWhereInput {
 }
 
 export class UserWhereUniqueInput {
-    id?: string;
+    id?: number;
     email?: string;
 }
 
 export interface Node {
-    id: string;
+    id: number;
 }
 
 export class AggregateComment {
@@ -982,7 +968,7 @@ export class BatchPayload {
 }
 
 export class Comment implements Node {
-    id: string;
+    id: number;
     text: string;
     author: User;
     post: Post;
@@ -994,6 +980,7 @@ export class CommentConnection {
     pageInfo: PageInfo;
     edges: CommentEdge[];
     aggregate: AggregateComment;
+    totalCount?: number;
 }
 
 export class CommentEdge {
@@ -1002,7 +989,7 @@ export class CommentEdge {
 }
 
 export class CommentPreviousValues {
-    id: string;
+    id: number;
     text: string;
     createdAt: DateTime;
     updatedAt: DateTime;
@@ -1047,7 +1034,7 @@ export class PageInfo {
 }
 
 export class Post implements Node {
-    id: string;
+    id: number;
     title: string;
     body: string;
     published: boolean;
@@ -1062,6 +1049,7 @@ export class PostConnection {
     pageInfo: PageInfo;
     edges: PostEdge[];
     aggregate: AggregatePost;
+    totalCount?: number;
 }
 
 export class PostEdge {
@@ -1070,7 +1058,7 @@ export class PostEdge {
 }
 
 export class PostPreviousValues {
-    id: string;
+    id: number;
     title: string;
     body: string;
     published: boolean;
@@ -1117,8 +1105,8 @@ export abstract class ISubscription {
     abstract comment(where?: CommentSubscriptionWhereInput): CommentSubscriptionPayload | Promise<CommentSubscriptionPayload>;
 }
 
-export class User implements Node {
-    id: string;
+export class User {
+    id: number;
     address?: string;
     city?: string;
     company?: string;
@@ -1128,6 +1116,7 @@ export class User implements Node {
     image?: string;
     lastName: string;
     password: string;
+    description?: string;
     postalCode?: string;
     role: Role;
     posts?: Post[];
@@ -1140,7 +1129,7 @@ export class User implements Node {
 }
 
 export class UserBasic {
-    id: string;
+    id: number;
     address?: string;
     city?: string;
     company?: string;
@@ -1151,6 +1140,7 @@ export class UserBasic {
     lastName: string;
     password: string;
     postalCode?: string;
+    description?: string;
     role: Role;
 }
 
@@ -1158,6 +1148,7 @@ export class UserConnection {
     pageInfo: PageInfo;
     edges: UserEdge[];
     aggregate: AggregateUser;
+    totalCount?: number;
 }
 
 export class UserEdge {
@@ -1166,7 +1157,7 @@ export class UserEdge {
 }
 
 export class UserPreviousValues {
-    id: string;
+    id: number;
     address?: string;
     city?: string;
     company?: string;
@@ -1176,6 +1167,7 @@ export class UserPreviousValues {
     image?: string;
     lastName: string;
     password: string;
+    description?: string;
     postalCode?: string;
     role: Role;
     createdAt: DateTime;

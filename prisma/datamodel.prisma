@@ -6,7 +6,7 @@ enum Role {
 }
 
 type User {
-  id: ID! @id
+  id: Int! @id(strategy: SEQUENCE) @sequence(name: "MY_SEQUENCE", initialValue:1, allocationSize:100)
   address: String
   city: String
   company: String
@@ -16,6 +16,7 @@ type User {
   image: String
   lastName: String!
   password: String!
+  description: String
   postalCode: String
   role: Role! @default(value: GUEST)
   posts: [Post!]! @relation(name: "PostToUser", onDelete: CASCADE)
@@ -25,7 +26,7 @@ type User {
 }
 
 type Post {
-  id: ID! @id
+  id: Int! @id
   title: String!
   body: String!
   published: Boolean!
@@ -36,7 +37,7 @@ type Post {
 }
 
 type Comment {
-  id: ID! @id
+  id: Int! @id
   text: String!
   author: User! @relation(name: "CommentToUser", onDelete: SET_NULL)
   post: Post!@relation(name: "CommentToPost", onDelete: SET_NULL)

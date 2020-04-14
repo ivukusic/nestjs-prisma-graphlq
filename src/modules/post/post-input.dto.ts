@@ -1,7 +1,7 @@
 import { IsString, MaxLength, MinLength } from 'class-validator';
-import { PostCreateInput } from '../../graphql.schema.generated';
+import { PostCreateWithoutAuthorInput } from '../../graphql.schema.generated';
 
-export class PostInputDto extends PostCreateInput {
+export class PostInputDto extends PostCreateWithoutAuthorInput {
   @IsString()
   @MinLength(10)
   @MaxLength(60)

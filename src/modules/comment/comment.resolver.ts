@@ -28,8 +28,10 @@ export class CommentResolver {
   }
 
   @Query()
-  commentsConnection(@Args() args: CommentArgs, @Info() info) {
-    return this.prisma.query.commentsConnection(args, info);
+  async commentsConnection(@Args() args: CommentArgs, @Info() info) {
+    const { count: totalCount } = await this.prisma.client.commentsConnection({ where: args.where }).aggregate();
+    const data = await this.prisma.query.commentsConnection(args, info);
+    return { ...data, totalCount };
   }
 
   @Mutation()

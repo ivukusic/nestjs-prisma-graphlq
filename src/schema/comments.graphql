@@ -9,11 +9,15 @@ input CommentArgs {
 }
 
 input CommentCreateInput {
-  id: ID
+  id: Int
   text: String!
   updatedAt: DateTime
   createdAt: DateTime
   post: PostCreateOneWithoutCommentsInput!
+}
+
+extend type CommentConnection {
+  totalCount: Int
 }
 
 type Mutation {

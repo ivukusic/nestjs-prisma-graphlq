@@ -9,7 +9,7 @@ input UserArgs {
 }
 
 type UserBasic {
-  id: ID!
+  id: Int!
   address: String
   city: String
   company: String
@@ -20,6 +20,7 @@ type UserBasic {
   lastName: String!
   password: String!
   postalCode: String
+  description: String
   role: Role!
 }
 
@@ -78,6 +79,7 @@ input SignUpInput {
   lastName: String!
   password: String!
   postalCode: String
+  description: String
 }
 
 input LoginInput {
@@ -90,7 +92,11 @@ extend type User {
 }
 
 input UserDeleteWhereInput {
-  id: String!
+  id: Int!
+}
+
+extend type UserConnection {
+  totalCount: Int
 }
 
 type Mutation {

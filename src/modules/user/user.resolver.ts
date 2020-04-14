@@ -32,7 +32,9 @@ export class UserResolver {
 
   @ResolveField()
   async postsConnection(@Parent() { id }, @Info() info) {
-    return await this.prisma.query.postsConnection({ where: { author: { id } } }, info);
+    const { count: totalCount } = await this.prisma.client.postsConnection({ where: { author: { id } } }).aggregate();
+    const data = await this.prisma.query.postsConnection({ where: { author: { id } } }, info);
+    return { ...data, totalCount };
   }
 
   /**
@@ -64,8 +66,10 @@ export class UserResolver {
 
   @Query()
   @UseGuards(GqlAuthGuard, RolesGuard('ADMIN'))
-  usersConnection(@Args() args: UserArgs, @Info() info) {
-    return this.prisma.query.usersConnection(args, info);
+  async usersConnection(@Args() args: UserArgs, @Info() info) {
+    const { count: totalCount } = await this.prisma.client.usersConnection({ where: args.where }).aggregate();
+    const data = await this.prisma.query.usersConnection(args, info);
+    return { ...data, totalCount };
   }
 
   /**
@@ -88,7 +92,19 @@ export class UserResolver {
   @UseGuards(GqlAuthGuard, RolesGuard('USER'))
   async updateUser(
     @Args('data')
-    { address, city, company, country, firstName, image, lastName, postalCode, role }: UserUpdateInput,
+    {
+      address,
+      city,
+      company,
+      country,
+      description,
+      email,
+      firstName,
+      image,
+      lastName,
+      postalCode,
+      role,
+    }: UserUpdateInput,
     @Args('where') { id }: UserWhereUniqueInput,
     @GetUser() user: User,
     @Info() info: any,
@@ -109,12 +125,13 @@ export class UserResolver {
             city: city || found.city,
             company: company || found.company,
             country: country || found.country,
+            description: description || found.description,
             firstName: firstName || found.firstName,
             image: image || found.image,
             lastName: lastName || found.lastName,
             postalCode: postalCode || found.postalCode,
             role: updateRole && role ? role : found.role,
-            email: found.email,
+            email: email || found.email,
             password: found.password,
           },
           where: { id },

@@ -2,14 +2,21 @@ import { Args, Mutation, Parent, Query, ResolveField, Resolver, Info } from '@ne
 import { UseGuards, NotFoundException } from '@nestjs/common';
 
 import { PrismaService } from '../../prisma/prisma.service';
-import { Post, PostArgs, User, Role, PostUpdateInput, PostWhereUniqueInput } from '../../graphql.schema.generated';
+import {
+  Post,
+  PostArgs,
+  User,
+  Role,
+  PostUpdateInput,
+  PostWhereUniqueInput,
+  PostCreateWithoutAuthorInput,
+} from '../../graphql.schema.generated';
 import { GetUser } from '../../shared/decorators/decorators';
 import { GqlAuthGuard } from '../auth/graphql-auth.guard';
 import { PostInputDto } from './post-input.dto';
 import { RolesGuard } from '../auth/roles.guard';
 
 @Resolver('Post')
-@UseGuards(GqlAuthGuard, RolesGuard('GUEST'))
 export class PostResolver {
   constructor(private readonly prisma: PrismaService) {}
 
@@ -17,8 +24,10 @@ export class PostResolver {
    * POST PROPERTIES RESOLVER
    */
   @ResolveField()
-  commentsConnection(@Parent() { id }: Post, @Info() info) {
-    return this.prisma.query.commentsConnection({ where: { post: { id } } }, info);
+  async commentsConnection(@Parent() { id }: Post, @Info() info) {
+    const { count: totalCount } = await this.prisma.client.commentsConnection({ where: { post: { id } } }).aggregate();
+    const data = await this.prisma.query.commentsConnection({ where: { post: { id } } }, info);
+    return { ...data, totalCount };
   }
 
   @ResolveField()
@@ -44,8 +53,10 @@ export class PostResolver {
   }
 
   @Query()
-  postsConnection(@Args() args: PostArgs, @Info() info) {
-    return this.prisma.query.postsConnection(args, info);
+  async postsConnection(@Args() args: PostArgs, @Info() info) {
+    const { count: totalCount } = await this.prisma.client.postsConnection({ where: args.where }).aggregate();
+    const data = await this.prisma.query.postsConnection(args, info);
+    return { ...data, totalCount };
   }
 
   /**
@@ -70,7 +81,7 @@ export class PostResolver {
   @Mutation()
   @UseGuards(GqlAuthGuard, RolesGuard('EDITOR'))
   async updatePost(
-    @Args('data') { title, body, published }: PostUpdateInput,
+    @Args('data') data: PostUpdateInput,
     @Args('where') { id }: PostWhereUniqueInput,
     @GetUser() user: User,
     @Info() info,
@@ -84,9 +95,9 @@ export class PostResolver {
       return this.prisma.mutation.updatePost(
         {
           data: {
-            title: title || found[0].title,
-            body: body || found[0].body,
-            published: published || found[0].published,
+            title: data.title || found[0].title,
+            body: data.body || found[0].body,
+            published: data.hasOwnProperty('published') ? data.published : found[0].published,
           },
           where: { id },
         },

@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Sat Apr 11 2020 20:44:09 GMT+0200 (Central European Summer Time)
+# timestamp: Tue Apr 21 2020 08:31:41 GMT+0200 (Central European Summer Time)
 
 type AggregateComment {
   count: Int!
@@ -21,7 +21,7 @@ type BatchPayload {
 }
 
 type Comment implements Node {
-  id: ID!
+  id: Int!
   text: String!
   author: User!
   post: Post!
@@ -46,7 +46,6 @@ type CommentConnection {
 }
 
 input CommentCreateInput {
-  id: ID
   text: String!
   author: UserCreateOneWithoutCommentsInput!
   post: PostCreateOneWithoutCommentsInput!
@@ -63,13 +62,11 @@ input CommentCreateManyWithoutPostInput {
 }
 
 input CommentCreateWithoutAuthorInput {
-  id: ID
   text: String!
   post: PostCreateOneWithoutCommentsInput!
 }
 
 input CommentCreateWithoutPostInput {
-  id: ID
   text: String!
   author: UserCreateOneWithoutCommentsInput!
 }
@@ -101,7 +98,7 @@ enum CommentOrderByInput {
 }
 
 type CommentPreviousValues {
-  id: ID!
+  id: Int!
   text: String!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -122,72 +119,42 @@ input CommentScalarWhereInput {
   Logical NOT on all given filters combined by AND.
   """
   NOT: [CommentScalarWhereInput!]
-  id: ID
+  id: Int
 
   """
   All values that are not equal to given value.
   """
-  id_not: ID
+  id_not: Int
 
   """
   All values that are contained in given list.
   """
-  id_in: [ID!]
+  id_in: [Int!]
 
   """
   All values that are not contained in given list.
   """
-  id_not_in: [ID!]
+  id_not_in: [Int!]
 
   """
   All values less than the given value.
   """
-  id_lt: ID
+  id_lt: Int
 
   """
   All values less than or equal the given value.
   """
-  id_lte: ID
+  id_lte: Int
 
   """
   All values greater than the given value.
   """
-  id_gt: ID
+  id_gt: Int
 
   """
   All values greater than or equal the given value.
   """
-  id_gte: ID
-
-  """
-  All values containing the given string.
-  """
-  id_contains: ID
-
-  """
-  All values not containing the given string.
-  """
-  id_not_contains: ID
-
-  """
-  All values starting with the given string.
-  """
-  id_starts_with: ID
-
-  """
-  All values not starting with the given string.
-  """
-  id_not_starts_with: ID
-
-  """
-  All values ending with the given string.
-  """
-  id_ends_with: ID
-
-  """
-  All values not ending with the given string.
-  """
-  id_not_ends_with: ID
+  id_gte: Int
   text: String
 
   """
@@ -463,72 +430,42 @@ input CommentWhereInput {
   Logical NOT on all given filters combined by AND.
   """
   NOT: [CommentWhereInput!]
-  id: ID
+  id: Int
 
   """
   All values that are not equal to given value.
   """
-  id_not: ID
+  id_not: Int
 
   """
   All values that are contained in given list.
   """
-  id_in: [ID!]
+  id_in: [Int!]
 
   """
   All values that are not contained in given list.
   """
-  id_not_in: [ID!]
+  id_not_in: [Int!]
 
   """
   All values less than the given value.
   """
-  id_lt: ID
+  id_lt: Int
 
   """
   All values less than or equal the given value.
   """
-  id_lte: ID
+  id_lte: Int
 
   """
   All values greater than the given value.
   """
-  id_gt: ID
+  id_gt: Int
 
   """
   All values greater than or equal the given value.
   """
-  id_gte: ID
-
-  """
-  All values containing the given string.
-  """
-  id_contains: ID
-
-  """
-  All values not containing the given string.
-  """
-  id_not_contains: ID
-
-  """
-  All values starting with the given string.
-  """
-  id_starts_with: ID
-
-  """
-  All values not starting with the given string.
-  """
-  id_not_starts_with: ID
-
-  """
-  All values ending with the given string.
-  """
-  id_ends_with: ID
-
-  """
-  All values not ending with the given string.
-  """
-  id_not_ends_with: ID
+  id_gte: Int
   text: String
 
   """
@@ -672,7 +609,7 @@ input CommentWhereInput {
 }
 
 input CommentWhereUniqueInput {
-  id: ID
+  id: Int
 }
 
 scalar DateTime
@@ -717,7 +654,7 @@ interface Node {
   """
   The id of the object.
   """
-  id: ID!
+  id: Int!
 }
 
 """
@@ -745,8 +682,8 @@ type PageInfo {
   endCursor: String
 }
 
-type Post implements Node {
-  id: ID!
+type Post {
+  id: Int!
   title: String!
   body: String!
   published: Boolean!
@@ -781,7 +718,6 @@ type PostConnection {
 }
 
 input PostCreateInput {
-  id: ID
   title: String!
   body: String!
   published: Boolean!
@@ -800,7 +736,6 @@ input PostCreateOneWithoutCommentsInput {
 }
 
 input PostCreateWithoutAuthorInput {
-  id: ID
   title: String!
   body: String!
   published: Boolean!
@@ -808,7 +743,6 @@ input PostCreateWithoutAuthorInput {
 }
 
 input PostCreateWithoutCommentsInput {
-  id: ID
   title: String!
   body: String!
   published: Boolean!
@@ -846,7 +780,7 @@ enum PostOrderByInput {
 }
 
 type PostPreviousValues {
-  id: ID!
+  id: Int!
   title: String!
   body: String!
   published: Boolean!
@@ -869,72 +803,42 @@ input PostScalarWhereInput {
   Logical NOT on all given filters combined by AND.
   """
   NOT: [PostScalarWhereInput!]
-  id: ID
+  id: Int
 
   """
   All values that are not equal to given value.
   """
-  id_not: ID
+  id_not: Int
 
   """
   All values that are contained in given list.
   """
-  id_in: [ID!]
+  id_in: [Int!]
 
   """
   All values that are not contained in given list.
   """
-  id_not_in: [ID!]
+  id_not_in: [Int!]
 
   """
   All values less than the given value.
   """
-  id_lt: ID
+  id_lt: Int
 
   """
   All values less than or equal the given value.
   """
-  id_lte: ID
+  id_lte: Int
 
   """
   All values greater than the given value.
   """
-  id_gt: ID
+  id_gt: Int
 
   """
   All values greater than or equal the given value.
   """
-  id_gte: ID
-
-  """
-  All values containing the given string.
-  """
-  id_contains: ID
-
-  """
-  All values not containing the given string.
-  """
-  id_not_contains: ID
-
-  """
-  All values starting with the given string.
-  """
-  id_starts_with: ID
-
-  """
-  All values not starting with the given string.
-  """
-  id_not_starts_with: ID
-
-  """
-  All values ending with the given string.
-  """
-  id_ends_with: ID
-
-  """
-  All values not ending with the given string.
-  """
-  id_not_ends_with: ID
+  id_gte: Int
   title: String
 
   """
@@ -1281,72 +1185,42 @@ input PostWhereInput {
   Logical NOT on all given filters combined by AND.
   """
   NOT: [PostWhereInput!]
-  id: ID
+  id: Int
 
   """
   All values that are not equal to given value.
   """
-  id_not: ID
+  id_not: Int
 
   """
   All values that are contained in given list.
   """
-  id_in: [ID!]
+  id_in: [Int!]
 
   """
   All values that are not contained in given list.
   """
-  id_not_in: [ID!]
+  id_not_in: [Int!]
 
   """
   All values less than the given value.
   """
-  id_lt: ID
+  id_lt: Int
 
   """
   All values less than or equal the given value.
   """
-  id_lte: ID
+  id_lte: Int
 
   """
   All values greater than the given value.
   """
-  id_gt: ID
+  id_gt: Int
 
   """
   All values greater than or equal the given value.
   """
-  id_gte: ID
-
-  """
-  All values containing the given string.
-  """
-  id_contains: ID
-
-  """
-  All values not containing the given string.
-  """
-  id_not_contains: ID
-
-  """
-  All values starting with the given string.
-  """
-  id_starts_with: ID
-
-  """
-  All values not starting with the given string.
-  """
-  id_not_starts_with: ID
-
-  """
-  All values ending with the given string.
-  """
-  id_ends_with: ID
-
-  """
-  All values not ending with the given string.
-  """
-  id_not_ends_with: ID
+  id_gte: Int
   title: String
 
   """
@@ -1564,7 +1438,7 @@ input PostWhereInput {
 }
 
 input PostWhereUniqueInput {
-  id: ID
+  id: Int
 }
 
 type Query {
@@ -1650,8 +1524,8 @@ type Subscription {
   comment(where: CommentSubscriptionWhereInput): CommentSubscriptionPayload
 }
 
-type User implements Node {
-  id: ID!
+type User {
+  id: Int!
   address: String
   city: String
   company: String
@@ -1661,6 +1535,7 @@ type User implements Node {
   image: String
   lastName: String!
   password: String!
+  description: String
   postalCode: String
   role: Role!
   posts(
@@ -1702,7 +1577,6 @@ type UserConnection {
 }
 
 input UserCreateInput {
-  id: ID
   address: String
   city: String
   company: String
@@ -1712,6 +1586,7 @@ input UserCreateInput {
   image: String
   lastName: String!
   password: String!
+  description: String
   postalCode: String
   role: Role
   posts: PostCreateManyWithoutAuthorInput
@@ -1729,7 +1604,6 @@ input UserCreateOneWithoutPostsInput {
 }
 
 input UserCreateWithoutCommentsInput {
-  id: ID
   address: String
   city: String
   company: String
@@ -1739,13 +1613,13 @@ input UserCreateWithoutCommentsInput {
   image: String
   lastName: String!
   password: String!
+  description: String
   postalCode: String
   role: Role
   posts: PostCreateManyWithoutAuthorInput
 }
 
 input UserCreateWithoutPostsInput {
-  id: ID
   address: String
   city: String
   company: String
@@ -1755,6 +1629,7 @@ input UserCreateWithoutPostsInput {
   image: String
   lastName: String!
   password: String!
+  description: String
   postalCode: String
   role: Role
   comments: CommentCreateManyWithoutAuthorInput
@@ -1796,6 +1671,8 @@ enum UserOrderByInput {
   lastName_DESC
   password_ASC
   password_DESC
+  description_ASC
+  description_DESC
   postalCode_ASC
   postalCode_DESC
   role_ASC
@@ -1807,7 +1684,7 @@ enum UserOrderByInput {
 }
 
 type UserPreviousValues {
-  id: ID!
+  id: Int!
   address: String
   city: String
   company: String
@@ -1817,6 +1694,7 @@ type UserPreviousValues {
   image: String
   lastName: String!
   password: String!
+  description: String
   postalCode: String
   role: Role!
   createdAt: DateTime!
@@ -1878,6 +1756,7 @@ input UserUpdateInput {
   image: String
   lastName: String
   password: String
+  description: String
   postalCode: String
   role: Role
   posts: PostUpdateManyWithoutAuthorInput
@@ -1894,6 +1773,7 @@ input UserUpdateManyMutationInput {
   image: String
   lastName: String
   password: String
+  description: String
   postalCode: String
   role: Role
 }
@@ -1922,6 +1802,7 @@ input UserUpdateWithoutCommentsDataInput {
   image: String
   lastName: String
   password: String
+  description: String
   postalCode: String
   role: Role
   posts: PostUpdateManyWithoutAuthorInput
@@ -1937,6 +1818,7 @@ input UserUpdateWithoutPostsDataInput {
   image: String
   lastName: String
   password: String
+  description: String
   postalCode: String
   role: Role
   comments: CommentUpdateManyWithoutAuthorInput
@@ -1967,72 +1849,42 @@ input UserWhereInput {
   Logical NOT on all given filters combined by AND.
   """
   NOT: [UserWhereInput!]
-  id: ID
+  id: Int
 
   """
   All values that are not equal to given value.
   """
-  id_not: ID
+  id_not: Int
 
   """
   All values that are contained in given list.
   """
-  id_in: [ID!]
+  id_in: [Int!]
 
   """
   All values that are not contained in given list.
   """
-  id_not_in: [ID!]
+  id_not_in: [Int!]
 
   """
   All values less than the given value.
   """
-  id_lt: ID
+  id_lt: Int
 
   """
   All values less than or equal the given value.
   """
-  id_lte: ID
+  id_lte: Int
 
   """
   All values greater than the given value.
   """
-  id_gt: ID
+  id_gt: Int
 
   """
   All values greater than or equal the given value.
   """
-  id_gte: ID
-
-  """
-  All values containing the given string.
-  """
-  id_contains: ID
-
-  """
-  All values not containing the given string.
-  """
-  id_not_contains: ID
-
-  """
-  All values starting with the given string.
-  """
-  id_starts_with: ID
-
-  """
-  All values not starting with the given string.
-  """
-  id_not_starts_with: ID
-
-  """
-  All values ending with the given string.
-  """
-  id_ends_with: ID
-
-  """
-  All values not ending with the given string.
-  """
-  id_not_ends_with: ID
+  id_gte: Int
   address: String
 
   """
@@ -2627,6 +2479,72 @@ input UserWhereInput {
   All values not ending with the given string.
   """
   password_not_ends_with: String
+  description: String
+
+  """
+  All values that are not equal to given value.
+  """
+  description_not: String
+
+  """
+  All values that are contained in given list.
+  """
+  description_in: [String!]
+
+  """
+  All values that are not contained in given list.
+  """
+  description_not_in: [String!]
+
+  """
+  All values less than the given value.
+  """
+  description_lt: String
+
+  """
+  All values less than or equal the given value.
+  """
+  description_lte: String
+
+  """
+  All values greater than the given value.
+  """
+  description_gt: String
+
+  """
+  All values greater than or equal the given value.
+  """
+  description_gte: String
+
+  """
+  All values containing the given string.
+  """
+  description_contains: String
+
+  """
+  All values not containing the given string.
+  """
+  description_not_contains: String
+
+  """
+  All values starting with the given string.
+  """
+  description_starts_with: String
+
+  """
+  All values not starting with the given string.
+  """
+  description_not_starts_with: String
+
+  """
+  All values ending with the given string.
+  """
+  description_ends_with: String
+
+  """
+  All values not ending with the given string.
+  """
+  description_not_ends_with: String
   postalCode: String
 
   """
@@ -2790,6 +2708,6 @@ input UserWhereInput {
 }
 
 input UserWhereUniqueInput {
-  id: ID
+  id: Int
   email: String
 }
